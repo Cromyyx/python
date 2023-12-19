@@ -6,7 +6,7 @@ def dice(amount, sides):
     summ = 0
     for i in range(amount):
         number = random.randint(1, sides)
-        print("Würfel nr.", i + 1, number)
+        print("Würfel nr." + str(i + 1), number)
         summ = summ + number
     return summ
 
