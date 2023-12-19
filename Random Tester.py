@@ -22,9 +22,21 @@ for i in range(amount):
     else:
         five = five + 1
 
+medialwert = amount / 5
+percentage_one = abs(one - medialwert)
+percentage_two = abs(two - medialwert)
+percentage_three = abs(three - medialwert)
+percentage_four = abs(four - medialwert)
+percentage_five = abs(five - medialwert)
 
+percentage = percentage_one + percentage_two + percentage_three + percentage_four + percentage_five
+answer = percentage / 5
 print("one:", one)
 print("two", two)
 print("three", three)
 print("four", four)
 print("five", five)
+
+answer_ver = answer / amount
+print("Standart abweichung", answer)
+print("Standart Abweichung im Verhältnis", answer_ver)
