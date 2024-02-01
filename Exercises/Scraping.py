@@ -27,8 +27,14 @@ for name in names:
     list_name.append(text_name)
 
 for time in times:
-    text_time = time.find('span', class_='badge map-name text-hp2').text
-    list_time.append(text_time)
+    text_time = time.find('span', class_='badge map-name text-hp2')
+    print(text_time)
+    if text_time is None:
+        list_time.append("0")
+    else:
+        text_time = time.find('span', class_='badge map-name text-hp2').text
+        list_time.append(text_time)
+print(list_time)
 
 list_fused = []
 for i in range(8):
