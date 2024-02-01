@@ -28,30 +28,32 @@ for name in names:
 
 for time in times:
     text_time = time.find('span', class_='badge map-name text-hp2')
-    print(text_time)
     if text_time is None:
         list_time.append("0")
     else:
         text_time = time.find('span', class_='badge map-name text-hp2').text
         list_time.append(text_time)
-print(list_time)
 
 list_fused = []
-for i in range(8):
+for i in range(20): #Brawball 8 active maps
     list_temp = []
     list_temp.append(list_name[i])
     list_temp.append(list_time[i])
     list_fused.append(list_temp)
 print(list_fused)
 
-for n in range(8):
+for n in range(15):
+    print(n)
     if n == 0:
-        print('ye')
+        print()
 
     else:
         if list_fused[n][1] == list_fused[n - 1][1]:
             list_fused.pop(n)
         else:
             print()
+
 print(list_fused)
+
+
 
