@@ -25,11 +25,10 @@ list_time = []
 for name in names:
     text_name = name.find('span', class_='badge map-name').text
     list_name.append(text_name)
-print(list_name)
+
 for time in times:
     text_time = time.find('span', class_='badge map-name text-hp2').text
     list_time.append(text_time)
-print(list_time)
 
 list_fused = []
 for i in range(8):
@@ -39,4 +38,14 @@ for i in range(8):
     list_fused.append(list_temp)
 print(list_fused)
 
-print(list_fused[0][1])
+for n in range(8):
+    if n == 0:
+        print('ye')
+
+    else:
+        if list_fused[n][1] == list_fused[n - 1][1]:
+            list_fused.pop(n)
+        else:
+            print()
+print(list_fused)
+
