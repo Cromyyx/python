@@ -1,5 +1,5 @@
-def addieren(x, y):
-    return x + y
-
-
-print(addieren(1, 2))
+import random
+x = not 4 == 3
+print(x)
+y = random.randint(4,5)
+print(y)
