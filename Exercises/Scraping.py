@@ -28,32 +28,39 @@ for name in names:
 
 for time in times:
     text_time = time.find('span', class_='badge map-name text-hp2')
-    if text_time is None:
+    if text_time is None: #Aktive maps have "None" time, this changes them to 0
         list_time.append("0")
     else:
         text_time = time.find('span', class_='badge map-name text-hp2').text
         list_time.append(text_time)
 
 list_fused = []
-for i in range(20): #Brawball 8 active maps
+for i in range(11): #Brawball 8 active maps
     list_temp = []
     list_temp.append(list_name[i])
     list_temp.append(list_time[i])
     list_fused.append(list_temp)
-print(list_fused)
 
-for n in range(15):
-    print(n)
-    if n == 0:
-        print()
 
-    else:
-        if list_fused[n][1] == list_fused[n - 1][1]:
-            list_fused.pop(n)
-        else:
-            print()
+def filter_list(lst):
+    # initialize an empty list to store the filtered elements
+    filtered = []
+    # initialize a variable to store the previous time
+    prev_time = None
+    # loop through the original list
+    for element in lst:
+      # get the current element and its time
+      time = element[1]
+      # check if the current time is different from the previous time
+      if time != prev_time:
+        # append the element to the filtered list
+        filtered.append(element)
+        # update the previous time
+        prev_time = time
+    # return the filtered list
+    return filtered
 
-print(list_fused)
 
+print(filter_list(list_fused))
 
 
