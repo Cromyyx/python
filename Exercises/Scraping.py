@@ -40,6 +40,7 @@ for i in range(11): #Brawball 8 active maps
     list_temp.append(list_name[i])
     list_temp.append(list_time[i])
     list_fused.append(list_temp)
+print(list_fused)
 
 
 def filter_list(lst):
