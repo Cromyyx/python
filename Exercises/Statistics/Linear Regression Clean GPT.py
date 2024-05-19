@@ -1,6 +1,6 @@
 import statistics
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as np  # statistics has no population/biased covariance
 
 # Data points
 x_data = [1, 2, 3, 4, 5]
@@ -14,17 +14,18 @@ print(f"Slope: {slope}, Intercept: {intercept}")
 
 # Define two points based on the slope and intercept for the line equation
 point_one = (0, intercept)
-point_two = (1, slope + intercept)  # y = mx+b
+point_two = (1, slope * 1 + intercept)  # y = mx+b
 
 # Plot the original data points
-plt.plot(x_data, y_data, 'bo', label='Data points')
+plt.plot(x_data, y_data, color='blue', marker='o', linestyle='', label='Data points')
 
 # Plot the regression line
-plt.axline(point_one, point_two, color='r', linestyle='--', label='Regression Line')
+plt.axline(point_one, point_two, color='r', linestyle='dashed', label='Regression Line')
 
 # Calculate and display R-squared and population covariance
 correlation = statistics.correlation(x_data, y_data) ** 2
-population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # array -> float
+# Bias = Population, Unbias = Sample
+population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # float: array -> float
 plt.text(1, 7, f"R²: {round(correlation, 3)}")
 plt.text(1, 6, f"Covariance: {round(population_covariance, 3)}")
 
