@@ -1,13 +1,12 @@
-import statistics
 import matplotlib.pyplot as plt
-import numpy as np  # statistics has no population/biased covariance
+import numpy as np
 
 # Data points
 x_data = [1, 2, 3, 4, 5]
 y_data = [4, 5.25, 6, 7.5, 7.75]
 
 # Perform linear regression
-slope, intercept = statistics.linear_regression(x_data, y_data)
+slope, intercept = np.polyfit(x_data, y_data, 1)  # 1 = linear (one polynom)
 
 # Display the slope and intercept
 print(f"Slope: {slope}, Intercept: {intercept}")
@@ -23,11 +22,11 @@ plt.plot(x_data, y_data, color='blue', marker='o', linestyle='', label='Data poi
 plt.axline(point_one, point_two, color='r', linestyle='dashed', label='Regression Line')
 
 # Calculate and display R-squared and population covariance
-correlation = statistics.correlation(x_data, y_data) ** 2
+correlation = float(np.corrcoef(x_data, y_data)[0, 1] ** 2)
 # Bias = Population, Unbias = Sample
 population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # float: array -> float
 plt.text(1, 7, f"R²: {round(correlation, 3)}")
-plt.text(1, 6, f"Covariance: {round(population_covariance, 3)}")
+plt.text(1, 6.75, f"Covariance: {round(population_covariance, 3)}")
 
 # Set graph title and labels
 plt.title("Hours Studied vs. Exam Grade")
