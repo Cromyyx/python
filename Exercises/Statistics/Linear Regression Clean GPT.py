@@ -13,7 +13,7 @@ print(f"Slope: {slope}, Intercept: {intercept}")
 
 # Define two points based on the slope and intercept for the line equation
 point_one = (0, intercept)
-point_two = (1, slope * 1 + intercept)  # y = mx+b
+point_two = (1, slope * 1 + intercept)  # y = kx+d
 
 # Plot the original data points
 plt.plot(x_data, y_data, color='blue', marker='o', linestyle='', label='Data points')
@@ -26,7 +26,7 @@ correlation = float(np.corrcoef(x_data, y_data)[0, 1] ** 2)
 # Bias = Population, Unbias = Sample
 population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # float: array -> float
 plt.text(1, 7, f"R²: {round(correlation, 3)}")
-plt.text(1, 6.75, f"Covariance: {round(population_covariance, 3)}")
+#plt.text(1, 6.75, f"Covariance: {round(population_covariance, 3)}")
 
 # Set graph title and labels
 plt.title("Hours Studied vs. Exam Grade")
