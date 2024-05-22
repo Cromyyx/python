@@ -24,7 +24,7 @@ plt.axline(point_one, point_two, color='r', linestyle='dashed', label='Regressio
 # Calculate and display R-squared and population covariance
 correlation = float(np.corrcoef(x_data, y_data)[0, 1] ** 2)
 # Bias = Population, Unbias = Sample
-population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # float: array -> float
+#population_covariance = float(np.cov(x_data, y_data, bias=True)[0, 1])  # float: array -> float
 plt.text(1, 7, f"R²: {round(correlation, 3)}")
 #plt.text(1, 6.75, f"Covariance: {round(population_covariance, 3)}")
 
