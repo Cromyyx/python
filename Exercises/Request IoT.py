@@ -1,28 +1,33 @@
 import requests
 import psutil
-import time
 
 API_KEY = '8A8VU9S997XDY39S'
 url = 'https://api.thingspeak.com/update'
 
+last_percent = None
+last_plugged = None
+
 while True:
     battery = psutil.sensors_battery()
     plugged = battery.power_plugged
-    percent = str(battery.percent)
-    plugged = "1" if plugged else "0"  # 1 = Plugged in, 0 = Not plugged in
-    print(percent + '% | ' + plugged)
+    percent = battery.percent
+    plugged_str = "1" if plugged else "0"  # 1 = Plugged in, 0 = Not plugged in
 
-    data = {
-        'api_key': API_KEY,
-        'field1': plugged,  # Example value for field 1
-        'field2': percent,  # Example value for field 2
-    }
+    if percent != last_percent or plugged_str != last_plugged:
+        print(f'{percent}% | {plugged_str}')
 
-    response = requests.post(url, data=data)
+        data = {
+            'api_key': API_KEY,
+            'field1': plugged_str,  # Example value for field 1
+            'field2': str(percent),  # Example value for field 2
+        }
 
-    if response.status_code == 200:
-        print('Data sent successfully!')
-    else:
-        print('Error sending data:', response.status_code)
+        response = requests.post(url, data=data)
 
-    time.sleep(15)  # Wait for 15 seconds before running the loop again
+        if response.status_code == 200:
+            print('Data sent successfully!')
+        else:
+            print(f'Error sending data: {response.status_code}')
+
+        last_percent = percent
+        last_plugged = plugged_str
