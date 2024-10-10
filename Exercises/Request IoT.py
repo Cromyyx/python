@@ -9,7 +9,7 @@ while True:
     battery = psutil.sensors_battery()
     plugged = battery.power_plugged
     percent = str(battery.percent)
-    plugged = 1 if plugged else "0"  # 1 = Plugged in, 0 = Not plugged in
+    plugged = "1" if plugged else "0"  # 1 = Plugged in, 0 = Not plugged in
     print(percent + '% | ' + plugged)
 
     data = {
